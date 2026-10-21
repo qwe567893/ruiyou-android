@@ -1,0 +1,25 @@
+{
+  "name": "ruiyou-android-app",
+  "private": true,
+  "version": "2.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "android:init": "npm run build && npx cap add android && node scripts/android-permissions.mjs && node scripts/android-branding.mjs && npx cap sync android",
+    "android:sync": "npm run build && npx cap sync android && node scripts/android-permissions.mjs && node scripts/android-branding.mjs",
+    "android:open": "npx cap open android",
+    "check": "node --check src/main.js && node --check src/lib/call.js && node --check src/lib/backend.js && node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@supabase/supabase-js": "^2.57.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "vite": "^7.1.0"
+  }
+}
