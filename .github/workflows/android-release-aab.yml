@@ -27,7 +27,7 @@ jobs:
       ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
       ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/ruiyou-upload-key.jks
+      ANDROID_KEYSTORE_PATH: /tmp/ruiyou-upload-key.jks
       RUIYOU_VERSION_CODE: ${{ inputs.version_code }}
       RUIYOU_VERSION_NAME: ${{ inputs.version_name }}
     steps:
