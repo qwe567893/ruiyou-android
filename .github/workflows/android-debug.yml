@@ -20,7 +20,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      # GitHub Ubuntu runners already include an Android SDK. Avoid setup-android@v3,
+      # which attempts to install the retired SDK 'tools' package.
+      - name: Verify preinstalled Android SDK
+        run: |
+          test -n "$ANDROID_HOME"
+          test -d "$ANDROID_HOME/platform-tools"
+          echo "Android SDK: $ANDROID_HOME"
       - name: Explain backend availability
         run: |
           if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_ANON_KEY" ]; then
